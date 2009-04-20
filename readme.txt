@@ -1,10 +1,10 @@
 === Plugin Name ===
 Contributors: kolev
 Donate link: http://nikolay.com/projects/sponsor/
-Tags: short URL, URL shortener, shorturl, revcanonical, shortlink, seo
+Tags: short URL, URL shortener, shorturl, revcanonical, shortlink, seo, linkrot
 Requires at least: 2.7
 Tested up to: 2.7.9
-Stable tag: 0.1
+Stable tag: 0.1.1
 
 ShortURL plugin creates short permalinks to your posts and pages using the Short URL Autodiscovery specification.
 
@@ -42,6 +42,9 @@ Yes. The tilde-based one will continue to be the default one though.
 * Test against WordPress 2.8!
 
 == Changelog ==
+
+= 04/20/2009 - Version 0.1.1 =
+ * Fixed a versioning issue
 
 = 04/20/2009 - Version 0.1 =
  * First release. Yay!

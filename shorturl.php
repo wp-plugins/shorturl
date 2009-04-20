@@ -4,7 +4,7 @@ Plugin Name: ShortURL
 Plugin URI: http://nikolay.com/projects/wordpress/shorturl/
 Description: Provides canonical short URLs for blog posts and pages in the form of http://example.com/~code
 Author: Nikolay Kolev
-Version: 0.0.1
+Version: 0.1.1
 Author URI: http://nikolay.com/
 */
 
