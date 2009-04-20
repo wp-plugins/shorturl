@@ -4,7 +4,7 @@ Plugin Name: ShortURL
 Plugin URI: http://nikolay.com/projects/wordpress/shorturl/
 Description: Provides canonical short URLs for blog posts and pages in the form of http://example.com/~code
 Author: Nikolay Kolev
-Version: 0.1.1
+Version: 0.2
 Author URI: http://nikolay.com/
 */
 
@@ -13,9 +13,13 @@ define('SHORTURL_FIELD_NAME', 'Short URL');
 function shorturl_get_post_shorturl($id) {
 	static $short_url;
 	if (!isset($short_url)) {
-		$short_url = get_post_meta($id, SHORTURL_FIELD_NAME, true);
-		if (empty($short_url)) {
-			$short_url = get_bloginfo('url') . '/~' . base_convert($id, 10, 36);
+		if ($id == 0) {
+			$short_url = get_bloginfo('url');
+		} else {
+			$short_url = get_post_meta($id, SHORTURL_FIELD_NAME, true);
+			if (empty($short_url)) {
+				$short_url = get_bloginfo('url') . '/~' . base_convert($id, 10, 36);
+			}
 		}
 	}
 	return $short_url;
@@ -23,17 +27,20 @@ function shorturl_get_post_shorturl($id) {
 
 function shorturl_valid_post_id() {
 	global $post;
+	if (is_home()) {
+		return 0;
+	}
 	if (is_single() || (is_page() && !is_front_page())) {
 		if ($post && $post->ID > 0) {
 			return $post->ID;
 		}
 	}
-	return 0;
+	return -1;
 }
 
 function shorturl_create(&$wp) {
 	$id = shorturl_valid_post_id();
-	if ($id > 0) {
+	if ($id >= 0) {
 		if (!headers_sent()) {
 			header('Link: <' . shorturl_get_post_shorturl($id) . '>; rel=shorturl');
 		}
@@ -42,7 +49,7 @@ function shorturl_create(&$wp) {
 
 function shorturl_wp_head() {
 	$id = shorturl_valid_post_id();
-	if ($id > 0) {
+	if ($id >= 0) {
 		echo '<link rel="shorturl" href="' . shorturl_get_post_shorturl($id) . '" />';
 	}
 }
