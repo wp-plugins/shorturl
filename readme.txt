@@ -44,7 +44,7 @@ Yes. The tilde-based one will continue to be the default one though.
 == Changelog ==
 
 = 04/27/2009 - Version 0.3 =
-* Replaced the tilde (~) with dash (-) in the short URLs similarly to FriendFeed & Ginx, but the tilde is still supported for backward compatibility.
+* Replaced the tilde (~) with dash (-) in the short URLs similarly to FriendFeed & Ginx, but the tilde is still supported for backward compatibility
 
 = 04/20/2009 - Version 0.2 =
 * Added a short URL for the homepage
