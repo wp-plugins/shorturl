@@ -4,7 +4,7 @@ Plugin Name: ShortURL
 Plugin URI: http://nikolay.com/projects/wordpress/shorturl/
 Description: Provides canonical short URLs for blog posts and pages in the form of http://example.com/~code
 Author: Nikolay Kolev
-Version: 0.2
+Version: 0.3
 Author URI: http://nikolay.com/
 */
 
@@ -18,7 +18,7 @@ function shorturl_get_post_shorturl($id) {
 		} else {
 			$short_url = get_post_meta($id, SHORTURL_FIELD_NAME, true);
 			if (empty($short_url)) {
-				$short_url = get_bloginfo('url') . '/~' . base_convert($id, 10, 36);
+				$short_url = get_bloginfo('url') . '/-' . base_convert($id, 10, 36);
 			}
 		}
 	}
@@ -56,7 +56,7 @@ function shorturl_wp_head() {
 
 function shorturl_redirect($query_vars) {
 	if (array_key_exists('pagename', $query_vars)
-		&& preg_match('/^~(?<code>[0-9a-z]+)$/', $query_vars['pagename'], $preg_matches)) {
+		&& preg_match('/^(\-|~)(?<code>[0-9a-z]+)$/', $query_vars['pagename'], $preg_matches)) {
 		$id = base_convert($preg_matches['code'], 36, 10);
 		$url = get_permalink($id);
 		if ($url) {
