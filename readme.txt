@@ -1,16 +1,27 @@
 === Plugin Name ===
 Contributors: kolev
 Donate link: http://nikolay.com/projects/sponsor/
-Tags: short URL, URL shortener, shorturl, revcanonical, shortlink, seo, linkrot, permalink, redirect
+Tags: short URL, URL shortener, shorturl, revcanonical, shortlink, seo, linkrot, permalink, redirect, twitter, wp.me
 Requires at least: 2.7
-Tested up to: 2.7.9
-Stable tag: 0.3
+Tested up to: 2.8
+Stable tag: 0.4
 
-ShortURL plugin creates short permalinks to your posts and pages using the Short URL Autodiscovery specification.
+The ShortURL plugin provides short canonical permalinks to your posts and pages similarly to WordPress.com via its WP.me service.
 
 == Description ==
 
-ShortURL plugin allows you to use your blog as a URL shorterning service by implementing both HTML and HTTP Short URL Autodiscovery specifications. Short URLs will be in the form of http://domain/basepath/-code. The autodiscovery feature allows third-party services that honor it to use your own short URLs instead of generating new ones using services such as TinyURL, bit.ly, and others. This gives your posts and pages canonical short URLs that give you all SEO benefits and don't leak traffic out to external domains and will prevent linkrot.
+The ShortURL plugin allows you to use your blog as your own URL shorterning service by implementing both the HTML and the HTTP Short URL Autodiscovery specifications. Your short URLs will be in the form of `http://domain/-code`.
+
+The autodiscovery feature allows third-party services that honor it to use your own short URLs instead of generating new ones using services such as TinyURL, bit.ly, and others. This gives your posts and pages canonical short URLs that give you all SEO benefits and don't leak traffic out to external domains and will prevent linkrot. The homepage short URLs is set to just `http://domain/` as a unique feature.
+
+The other great benefit of the ShortURL plugin is that the generated short URLs won't break if you change the permalink structure of your blog or rename the slug of a particular post or page.
+
+Due to the recent choice of both the microformats community and WordPress.com to use `rel="shortlink"` vs the alternative proposals, the ShortURL plugin is also using it now.
+
+More on the topic:
+
+http://microformats.org/wiki/rel-shortlink
+http://en.blog.wordpress.com/2009/08/14/shorten/
 
 == Installation ==
 
@@ -31,17 +42,26 @@ Yes, in the near future. Actually, third-party providers are already supported b
 
 = Are you planning to support alternative domains for short URLs? =
 
-Yes and this will also eliminate the tilde in the URLs.
+Yes and this will also eliminate the dash in the URLs.
 
 = Will you add support for custom short URL patterns? =
 
-Yes. The tilde-based one will continue to be the default one though.
+Yes. The dash-based one will continue to be the default one though.
 
 == To Do ==
 
-* Test against WordPress 2.8!
+* Test against WordPress 2.9 and WordPress MU
+* Add a settings page
+* Add a widget
+* Integrated with Google Analytics
+* Integrate with Top 3 Twitter plugins to use ShortURL instead of 3rd party services
 
 == Changelog ==
+
+= 08/15/2009 - Version 0.4 =
+* Added `[shorturl]` shortcode
+* Added `the_shorturl()` and `get_shorturl()` functions for use in themes
+* Switched to `rel="shortlink"` similarly to WP.me
 
 = 04/27/2009 - Version 0.3 =
 * Replaced the tilde (~) with dash (-) in the short URLs similarly to FriendFeed & Ginx, but the tilde is still supported for backward compatibility
