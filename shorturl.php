@@ -2,13 +2,41 @@
 /*
 Plugin Name: ShortURL
 Plugin URI: http://nikolay.com/projects/wordpress/shorturl/
-Description: Provides canonical short URLs for blog posts and pages in the form of http://example.com/~code
+Description: Provides short canonical permalinks to your posts and pages similarly to WordPress.com via its WP.me service.
 Author: Nikolay Kolev
-Version: 0.3
+Version: 0.4
 Author URI: http://nikolay.com/
 */
 
 define('SHORTURL_FIELD_NAME', 'Short URL');
+
+if (!function_exists('get_shorturl')) {
+	function get_shorturl() {
+		$post_id = shorturl_valid_post_id();
+		if ($id > 0) {
+			$shorturl = shorturl_get_post_shorturl($id);
+		} else {
+			$shorturl = '';
+		}
+		return $shorturl;
+	}
+}
+
+if (!function_exists('the_shorturl')) {
+	function the_shorturl() {
+		$shorturl = get_shorturl();
+		if ($shorturl) {
+			echo $shorturl;
+		}
+	}
+}
+
+if (!function_exists('shorturl_shortcode')) {
+	function shorturl_shortcode($attrs, $content = null) {
+		return get_shorturl();
+	}
+	add_shortcode('shorturl', 'shorturl_shortcode');
+}
 
 function shorturl_get_post_shorturl($id) {
 	static $short_url;
@@ -42,7 +70,7 @@ function shorturl_create(&$wp) {
 	$id = shorturl_valid_post_id();
 	if ($id >= 0) {
 		if (!headers_sent()) {
-			header('Link: <' . shorturl_get_post_shorturl($id) . '>; rel=shorturl');
+			header('Link: <' . shorturl_get_post_shorturl($id) . '>; rel=shortlink');
 		}
 	}
 }
@@ -50,7 +78,7 @@ function shorturl_create(&$wp) {
 function shorturl_wp_head() {
 	$id = shorturl_valid_post_id();
 	if ($id >= 0) {
-		echo '<link rel="shorturl" href="' . shorturl_get_post_shorturl($id) . '" />';
+		echo '<link rel="shortlink" href="' . shorturl_get_post_shorturl($id) . '" />';
 	}
 }
 
