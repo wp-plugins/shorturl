@@ -4,7 +4,7 @@ Plugin Name: ShortURL
 Plugin URI: http://nikolay.com/projects/wordpress/shorturl/
 Description: Provides short canonical permalinks to your posts and pages similarly to WordPress.com via its WP.me service.
 Author: Nikolay Kolev
-Version: 0.4
+Version: 0.4.1
 Author URI: http://nikolay.com/
 */
 
