@@ -4,7 +4,7 @@ Donate link: http://nikolay.com/projects/sponsor/
 Tags: short URL, URL shortener, shorturl, revcanonical, shortlink, seo, linkrot, permalink, redirect, twitter, wp.me
 Requires at least: 2.7
 Tested up to: 2.8
-Stable tag: 0.4.1
+Stable tag: 0.4.2
 
 The ShortURL plugin provides short canonical permalinks to your posts and pages similarly to WordPress.com via its WP.me service.
 
@@ -19,6 +19,7 @@ The other great benefit of the ShortURL plugin is that the generated short URLs 
 Due to the recent choice of both the [Microformats](http://microformats.org/) community and [WordPress.com](http://wordpress.com/) to use `rel="shortlink"` vs the alternative proposals, the ShortURL plugin is also using it now.
 
 More on the topic:
+
 * [Microformats Wiki: rel="shortlink"](http://microformats.org/wiki/rel-shortlink)
 * [WP.me - shorten your links](http://en.blog.wordpress.com/2009/08/14/shorten/)
 
@@ -53,9 +54,12 @@ Yes. The dash-based one will continue to be the default one though.
 * Add a settings page
 * Add a widget
 * Integrated with [Google Analytics](http://www.google.com/analytics/)
-* Integrate with Top 3 [Twitter](http://twitter.com/) plugins to use ShortURL instead of 3rd party services
+* Integrate with the top [Twitter](http://twitter.com/) plugins to use ShortURL instead of third-party services
 
 == Changelog ==
+
+= 0.4.2 =
+* Minor plugin info cleanup
 
 = 0.4.1 =
 * Minor plugin info cleanup
